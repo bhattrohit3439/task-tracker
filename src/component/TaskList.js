@@ -1,11 +1,10 @@
-import React from 'react';
 import Task from './Task';
 
-const TaskList = ({ tasks, taskDeleted }) => {
+const TaskList = ({ tasks, taskDeleted, onToggle }) => {
 	return (
 		<>
 			{tasks.map((task) => (
-				<Task task={task} key={task.taskId} onDelete={taskDeleted} />
+				<Task task={task} key={task.id} onDelete={taskDeleted} toggleReminder={onToggle} />
 			))}
 		</>
 	);

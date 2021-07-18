@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const AddTask = ({ onSubmit }) => {
 	const [task, setTask] = useState('');
 	const [dateTime, setDateTime] = useState('');
-	const [status, setStatus] = useState(false);
+	const [reminder, setReminder] = useState(false);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		onSubmit(task, dateTime, status);
+		onSubmit({ task: task, dateTime: dateTime, reminder: reminder });
 	};
 
 	return (
@@ -35,12 +35,12 @@ const AddTask = ({ onSubmit }) => {
 			</div>
 
 			<div className='form-control form-control-check'>
-				<label htmlFor='reminder'>Set Reminder</label>
+				<label htmlFor='reminder'>Set Priority</label>
 				<input
 					type='checkbox'
 					name='reminder'
-					defaultChecked={status}
-					onChange={(event) => (event.target.checked ? setStatus(true) : setStatus(false))}
+					defaultChecked={reminder}
+					onChange={(event) => (event.target.checked ? setReminder(true) : setReminder(false))}
 				/>
 			</div>
 			<button className='btn btn-block'>Save Task</button>
